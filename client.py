@@ -8,16 +8,15 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-client = discord.Client()
+bot = discord.Client()
+bot = commands.Bot(command_prefix='&')
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'{client.user} has connected to Discord!')
+    print(f'{bot.user} has connected to Discord!')
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
+@bot.command(name='test')
+async def test1(ctx):
 
     test_collection = [
         '1',
@@ -27,9 +26,7 @@ async def on_message(message):
             '3.2'
         ),
     ]
+    response = random.choice(test_collection)
+    await ctx.send(response)
 
-    if message.content == 'test_collection':
-        response = random.choice(test_collection)
-        await message.channel.send(response)
-
-client.run(TOKEN)
+bot.run(TOKEN)
