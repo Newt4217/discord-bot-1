@@ -2,7 +2,7 @@
 import os
 import discord
 import random
-
+from main import price_calc
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -28,5 +28,11 @@ async def test1(ctx):
     ]
     response = random.choice(test_collection)
     await ctx.send(response)
+   
+@bot.command(name='p')
+async def p(ctx, currency_name, vs_currency)
+#irgendwie bei vs currency = none aus usd setzen
+    price = price_calc(currency_name, vs_currency)
+    response = 'The current price of 1 '+currency name+' is '+price+' '+vs_currency
 
 bot.run(TOKEN)
