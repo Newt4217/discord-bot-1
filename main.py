@@ -11,4 +11,7 @@ def price_calc(ids: str, vs_currencies: str)
                    'vs_currencies': vs_currencies
                  }
     response = requests.get("https://api.coingecko.com/api/v3/simple/price", params=parameters)
-    return response.json()
+    raw_data = json.loads(response)
+    return raw_data["price"]
+
+print(price_calc('bitcoin', 'usd')
