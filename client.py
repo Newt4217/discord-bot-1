@@ -30,9 +30,10 @@ async def test1(ctx):
     await ctx.send(response)
    
 @bot.command(name='p')
-async def p(ctx, currency_name, vs_currency)
+vs_currency = 'usd' #funktioniert das?
+async def p(ctx, currency_name: str, vs_currency: str)
 #irgendwie bei vs currency = none aus usd setzen
-    price = price_calc(currency_name, vs_currency)
+    (price) = price_calc(currency_name, vs_currency)
     response = 'The current price of 1 '+currency name+' is '+price+' '+vs_currency
-
+    await ctx.send(response)
 bot.run(TOKEN)
