@@ -32,11 +32,21 @@ async def test1(ctx):
 
 @bot.command(name='p', help='Preise von Kryptowährungen mit der Syntax p [Währung, dessen Preis gesucht ist] [Währung in der der Preis angegeben werden soll]')
 async def p(ctx, *names):
-#irgendwie bei vs currency = none aus usd setzen
-    #if names[1] == None:
-    #    names[1] = 'usd'
+
+    if len(names) < 2: #2 hier später mit der ID liste ersetzen
+        price = price_calc(names[0], 'usd')
+        response = (f'The current price is {price} usd')
+        await ctx.send(response)
+        return
     price = price_calc(names[0], names[1])
-    response = (f'The current price is {price} {names[1]}')
+    response = (f'The current price is {price} {names[1]}.')
+    await ctx.send(response)
+
+@bot.command(name='test2', help='lediglich ein Testcommand')
+async def test2(ctx):
+
+    test_string = ':P'
+    response = test_string
     await ctx.send(response)
 
 
