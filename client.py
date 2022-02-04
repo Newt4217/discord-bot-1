@@ -1,10 +1,10 @@
-# bot.py
 import os
 import discord
 import random
 from discord.ext import commands
 from dotenv import load_dotenv
 from main import price_calc
+import mimcrvratioasync
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -42,11 +42,10 @@ async def p(ctx, *names):
     response = (f'The current price is {price} {names[1]}.')
     await ctx.send(response)
 
-@bot.command(name='test2', help='lediglich ein Testcommand')
-async def test2(ctx):
 
-    test_string = ':P'
-    response = test_string
+@bot.command(name='ratio', help='gibt ratio zwischen mim und 3crv im main eth pool aus, sollte idealerweise 1 sein')
+async def ratio(ctx):
+    response = (f'MIM:3CRV {await mimcrvratioasync.ratio_calc()}')
     await ctx.send(response)
 
 
