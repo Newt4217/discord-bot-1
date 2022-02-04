@@ -3,7 +3,7 @@ import discord
 import random
 from discord.ext import commands
 from dotenv import load_dotenv
-from main import price_calc
+from pricecalc import price_calc
 import mimcrvratioasync
 
 load_dotenv()
